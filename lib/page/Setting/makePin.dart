@@ -22,7 +22,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('สวัสดีคุณ $user'),
+        title: Text('Create PIN'),
         actions: [
           TextButton(
               onPressed: () {},
@@ -38,7 +38,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
           children: [
             const SizedBox(height: 40),
             Text(
-              'SET UP PIN',
+              'Create PIN',
               style: Theme.of(context).textTheme.headline4,
             ),
             const SizedBox(height: 20),
@@ -119,13 +119,6 @@ class _CreatePinPageState extends State<CreatePinPage> {
                     });
                   }
                 },
-                centerBottomWidget: IconButton(
-                  icon: const Icon(
-                    Icons.fingerprint,
-                    size: 40,
-                  ),
-                  onPressed: () {},
-                ),
               ),
             ),
           ],

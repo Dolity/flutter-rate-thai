@@ -27,13 +27,17 @@ class NotificationService {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print(
+          'Get Notify: ${message.notification?.title}, ${message.notification?.body}');
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
 
       if (notification != null && android != null) {
         // Handle message when app is in foreground
-      print(".......................opened from notification foreground WORK!.......................");
-      print("onMessage: ${message.notification?.title}/${message.notification?.body}");
+        print(
+            ".......................opened from notification foreground WORK!.......................");
+        print(
+            "onMessage: ${message.notification?.title}/${message.notification?.body}");
 
         showNotification(
             title: notification.title ?? '', body: notification.body ?? '');
@@ -41,14 +45,16 @@ class NotificationService {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print(".......................opened from notification background WORK!.......................");
-      print("onMessageOpenedApp: ${message.notification?.title}/${message.notification?.body}");
+      print(
+          ".......................opened from notification background WORK!.......................");
+      print(
+          "onMessageOpenedApp: ${message.notification?.title}/${message.notification?.body}");
       // Handle message when app is opened from notification background
       Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => CreatePinPage(
-          // title: message.notification?.title,
-          // body: message.notification?.body,
-        ),
+            // title: message.notification?.title,
+            // body: message.notification?.body,
+            ),
       ));
     });
   }
@@ -72,6 +78,4 @@ class NotificationService {
       payload: 'payload',
     );
   }
-
-
 }

@@ -6,7 +6,6 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:testprojectbc/page/login.dart';
 import '../models/profile.dart';
 
-
 // import '../flutter_flow/flutter_flow_theme.dart';
 // import '../flutter_flow/flutter_flow_util.dart';
 // import '../flutter_flow/flutter_flow_widgets.dart';
@@ -29,6 +28,8 @@ class _RegisterPage extends State<RegisterPage> {
   TextEditingController? emailInputController;
   TextEditingController? passwordInputController;
   TextEditingController? repassInputController;
+
+  bool valueObscureText = true;
 
   @override
   void initState() {
@@ -61,387 +62,435 @@ class _RegisterPage extends State<RegisterPage> {
               ),
             );
           }
-          if (snapshot.connectionState == ConnectionState.done){
+          if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
               body: Form(
                 key: formKey,
                 child: SingleChildScrollView(
-                child: GestureDetector(
-                  onTap: () => FocusScope.of(context).unfocus(),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 1,
-                    decoration: BoxDecoration(
+                  child: GestureDetector(
+                    onTap: () => FocusScope.of(context).unfocus(),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 1.05,
+                      decoration: BoxDecoration(
                         // color: Theme.of(context).backgroundColor,
+                        image: DecorationImage(
+                          fit: BoxFit.fitHeight,
+                          image: Image.asset(
+                            'assets/bgHome2.jpg',
+                          ).image,
                         ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 40, 1, 0),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(fontSize: 60),
-                            // fontFamily: 'Poppins',
-                            // fontSize: 30,
+                      ),
+                      child: Card(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 100,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: const BorderSide(
+                            color: Color.fromARGB(0, 255, 255, 255),
+                            width: 1,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                          child: ListView(
-
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
+                        elevation: 8,
+                        color:
+                            Color.fromARGB(0, 255, 255, 255).withOpacity(0.8),
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
-                                child: TextFormField(
-                                  // key: formKey,
-                                  keyboardType: TextInputType.emailAddress,
-                                  onSaved: (String? email) {
-                                    profile.email = email;
-                                  },
-                                  validator: MultiValidator([
-                                    RequiredValidator(errorText: "Please enter email!"),
-                                    EmailValidator(errorText: "email formation not correct!")
-                                  ]),
-
-
-                                  controller: emailInputController,
-                                  decoration: InputDecoration(
-                                    labelStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    hintText: 'Enter your email',
-                                    hintStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24, 40, 0, 0),
+                                    child: Image.asset(
+                                      'assets/LG_RT.png',
+                                      width: 170,
+                                      height: 60,
+                                      scale: 0.8,
+                                      fit: BoxFit.fitWidth,
                                     ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
                                   ),
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                  // fontFamily: 'Lexend Deca',
-                                  // color: Color(0xFF1D2429),
-                                  // fontSize: 14,
-                                  // fontWeight: FontWeight.normal,
-
-
-                                ),
+                                ],
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
-                                child: TextFormField(
-                                  obscureText: true,
-                                  // key: formKey,
-                                  onSaved: (String? password) {
-                                    profile.password = password;
-                                  },
-                                  validator: RequiredValidator(errorText: "Please enter password!"),
-
-                                  controller: passwordInputController,
-                                  //maxLines: null,
-
-                                  decoration: InputDecoration(
-
-                                    labelStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    hintText: 'Enter your password',
-                                    hintStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(24, 20, 0, 0),
+                                    child: Text(
+                                      "Get Started Below.",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontSize: 34,
+                                        fontFamily: 'Lexend',
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black,
                                       ),
-                                      borderRadius: BorderRadius.circular(40),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
                                   ),
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                  // fontFamily: 'Lexend Deca',
-                                  // color: Color(0xFF1D2429),
-                                  // fontSize: 14,
-                                  // fontWeight: FontWeight.normal,
-                                ),
+                                ],
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
-                                child: TextFormField(
-                                  // key: formKey,
-                                  // onSaved: (String? password) {
-                                  //   profile.password = password;
-                                  // },
-                                  obscureText: true,
-                                  validator: RequiredValidator(errorText: "Please Re-enter password!"),
-
-                                  controller: repassInputController,
-                                  //maxLines: null,
-
-                                  // obscureText: true,
-                                  decoration: InputDecoration(
-
-                                    labelStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    hintText: 'Re-enter password',
-                                    hintStyle: Theme.of(context).textTheme.bodyMedium,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF57636C),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
-                                  ),
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                  // fontFamily: 'Lexend Deca',
-                                  // color: Color(0xFF1D2429),
-                                  // fontSize: 14,
-                                  // fontWeight: FontWeight.normal,
-
-
-                                ),
-                              ),
-
-                              Padding(
-                                padding:  EdgeInsetsDirectional.fromSTEB(0,20,0,0),
-                                child: CheckboxListTile(
-                                  title: Text("I agree Terms of Service"),
-                                  value: value,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      value = newValue!;
-                                    });
-                                  },
-                                  controlAffinity: ListTileControlAffinity.leading,
-                                ),
-                              ),
-
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(15, 30, 15, 15),
-                                child: ElevatedButton(
+                                    EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 15, 15, 15),
+                                      child: TextFormField(
+                                        // key: formKey,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        onSaved: (String? email) {
+                                          profile.email = email;
+                                        },
+                                        validator: MultiValidator([
+                                          RequiredValidator(
+                                              errorText: "Please enter email!"),
+                                          EmailValidator(
+                                              errorText:
+                                                  "email formation not correct!")
+                                        ]),
 
-                                  onPressed: () async {
-                                    if (formKey.currentState!.validate()){
-                                      formKey.currentState?.save();
-                                      print("email = ${profile.email}, password = ${profile.password}");
-                                      try{
-                                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                                            email: profile.email!,
-                                            password: profile.password!
-                                        ).then((value){
-                                          formKey.currentState?.reset();
-                                          Fluttertoast.showToast(
-                                            msg: "Create account success",
-                                            gravity: ToastGravity.BOTTOM,
-                                            // backgroundColor: Colors.blueGrey
-                                          );
-                                          if (!mounted) return;
-                                          Navigator.pushReplacement(context,
-                                              MaterialPageRoute(builder: (context){
-                                                return LoginPage();
-                                              }));
-                                          });
+                                        controller: emailInputController,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? Colors.black
+                                              : Colors.white,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        decoration: InputDecoration(
+                                          labelText: 'Email',
+                                          hintText: 'Enter your email here ...',
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.email_rounded,
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? Colors.black
+                                                    : Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 15, 15, 15),
+                                      child: TextFormField(
+                                        // key: formKey,
+                                        onSaved: (String? password) {
+                                          profile.password = password;
+                                        },
+                                        validator: RequiredValidator(
+                                            errorText:
+                                                "Please enter password!"),
 
+                                        controller: passwordInputController,
+                                        //maxLines: null,
 
+                                        textAlign: TextAlign.center,
+                                        obscureText: valueObscureText,
+                                        decoration: InputDecoration(
+                                          labelText: 'Password',
+                                          hintText:
+                                              'Enter your password here ...',
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.password_rounded,
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? Colors.black
+                                                    : Colors.white,
+                                          ),
+                                          suffixIcon: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                valueObscureText =
+                                                    !valueObscureText;
+                                              });
+                                            },
+                                            child: Icon(
+                                              valueObscureText
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 15, 15, 15),
+                                      child: TextFormField(
+                                        // key: formKey,
+                                        // onSaved: (String? password) {
+                                        //   profile.password = password;
+                                        // },
+                                        validator: RequiredValidator(
+                                            errorText:
+                                                "Please Re-enter password!"),
 
-                                      }on FirebaseAuthException catch(e){
-                                        // print(e);
-                                        // print(e.languageCode);
+                                        controller: repassInputController,
+                                        textAlign: TextAlign.center,
+                                        obscureText: valueObscureText,
+                                        decoration: InputDecoration(
+                                          labelText: 'Re-Password',
+                                          hintText:
+                                              'Enter your re-password here ...',
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.password_rounded,
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? Colors.black
+                                                    : Colors.white,
+                                          ),
+                                          suffixIcon: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                valueObscureText =
+                                                    !valueObscureText;
+                                              });
+                                            },
+                                            child: Icon(
+                                              valueObscureText
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        // fontFamily: 'Lexend Deca',
+                                        // color: Color(0xFF1D2429),
+                                        // fontSize: 14,
+                                        // fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 30, 15, 15),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              onPrimary: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                              fixedSize: const Size(200, 45),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                              ),
+                                            ),
+                                            onPressed: () async {
+                                              if (formKey.currentState!
+                                                  .validate()) {
+                                                formKey.currentState?.save();
+                                                print(
+                                                    "email = ${profile.email}, password = ${profile.password}");
+                                                try {
+                                                  await FirebaseAuth.instance
+                                                      .createUserWithEmailAndPassword(
+                                                          email: profile.email!,
+                                                          password:
+                                                              profile.password!)
+                                                      .then((value) {
+                                                    formKey.currentState
+                                                        ?.reset();
+                                                    Fluttertoast.showToast(
+                                                      msg:
+                                                          "Create account success",
+                                                      gravity:
+                                                          ToastGravity.BOTTOM,
+                                                      // backgroundColor: Colors.blueGrey
+                                                    );
+                                                    if (!mounted) return;
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) {
+                                                      return LoginPage();
+                                                    }));
+                                                  });
+                                                } on FirebaseAuthException catch (e) {
+                                                  // print(e);
+                                                  // print(e.languageCode);
 
-                                        Fluttertoast.showToast(
-                                            msg: e.message!,
-                                          gravity: ToastGravity.BOTTOM,
-                                          // backgroundColor: Colors.blueGrey
-                                        );
-                                      }
-                                    }
-
-
-
-                                  },
-                                  child: Text('SIGN UP'),
-
-                                  style: ElevatedButton.styleFrom(
-                                    // width: 150,
-                                    // height: 50,
-                                    // color: Color(0xFF4B39EF),
-
-                                    textStyle: Theme.of(context).textTheme.headline6,
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Colors.white,
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-
-                                    elevation: 2,
-                                    primary: Colors.blue,
-                                    // minimumSize: const Size.fromWidth(20),
-                                    fixedSize: const Size(260, 50),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(50)),
-                                  ),
-                                  // icon: Icon(Icons.navigate_next),
-
-
+                                                  Fluttertoast.showToast(
+                                                    msg: e.message!,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
+                                                    // backgroundColor: Colors.blueGrey
+                                                  );
+                                                }
+                                              }
+                                            },
+                                            child: Text(
+                                              'Crate Account',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'Lexend',
+                                                fontWeight: FontWeight.normal,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            // icon: Icon(Icons.navigate_next),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Already have an account?',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: 'YourFontFamily',
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(24, 0, 4, 0),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                  context, "/login-page",
+                                                  arguments: []);
+                                            },
+                                            child: Text(
+                                              'Login',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: 'Lexend',
+                                                fontWeight: FontWeight.normal,
+                                                color: Colors.blue,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(15, 20, 15, 15),
-                                child: ElevatedButton(
-                                  onPressed: () {
-
-                                    if (formKey.currentState!.validate()) {
-                                      formKey.currentState?.save();
-                                      print("email = ${profile
-                                          .email}, password = ${profile
-                                          .password}");
-                                      setState(() {
-
-                                      });
-
-                                    }
-
-
-                                  },
-                                  child: const Text('Login'),
-                                  style: ElevatedButton.styleFrom(
-                                    // width: 150,
-                                    // height: 50,
-                                    // color: Colors.white,
-
-                                    textStyle: Theme.of(context).textTheme.headline6,
-
-
-                                    // fontFamily: 'Lexend Deca',
-                                    // color: Color(0xFF262D34),
-                                    // fontSize: 14,
-                                    // fontWeight: FontWeight.normal,
-                                    elevation: 1,
-                                    primary: Colors.white54,
-                                    // minimumSize: const Size.fromWidth(20),
-                                    fixedSize: const Size(260, 50),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(50)),
-                                  ),
-
-
-
-                                ),
-                              ),
-
-
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
             );
           }
 
@@ -451,7 +500,5 @@ class _RegisterPage extends State<RegisterPage> {
             ),
           );
         });
-
-
   }
 }

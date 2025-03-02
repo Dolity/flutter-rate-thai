@@ -7,19 +7,16 @@ class OtpSuccessPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-
     return _OtpSuccessPage();
   }
 }
 
 class _OtpSuccessPage extends State<OtpSuccessPage> {
-
-  @override  Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-
         child: SingleChildScrollView(
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,18 +25,10 @@ class _OtpSuccessPage extends State<OtpSuccessPage> {
                 'Email W OTP PASS!',
                 style: Theme.of(context).textTheme.headline4,
               ),
-
-
-
-
             ],
           ),
         ),
-
       ),
-
     );
-
-
   }
 }
